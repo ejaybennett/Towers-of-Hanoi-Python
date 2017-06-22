@@ -1,0 +1,15 @@
+moves = []
+def makeMove(numberDisks, start, finish):
+    if numberDisks == 1:
+        moves.append(str(start) + " to " + str(finish))
+    else:
+        makeMove(numberDisks - 1, start, otherDisk(start, finish))
+        makeMove(1, start, finish)
+        makeMove(numberDisks -1, otherDisk(start, finish), finish)
+def otherDisk(start, finish):
+    return 6 -  (start + finish)
+
+makeMove(10, 1, 3)
+
+for play in moves:
+    print(play)
